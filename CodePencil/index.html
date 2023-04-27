@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text editor</title>
+    <script src="https://kit.fontawesome.com/ec66b8794f.js" crossorigin="anonymous"></script>
+    <link href="./styles.css" rel="stylesheet">
+</head>
+<body>
+    <nav>
+        <div id="navbar">
+            <b>CodePencil</b>
+        </div>
+    </nav>
+    <div class="content">
+    <div class="container1">
+    <section id="html">
+        <div class="heading">
+            <label for="heading-name"><i class="fa-brands fa-html5"></i>HTML</label>
+        </div>
+        <div class="area">
+            <textarea  id="html-text" onkeyup="run()"></textarea>
+        </div>
+    </section>
+    
+    <section id="css">
+        <div class="heading">
+            <label for="heading-name"><i class="fa-brands fa-css3"></i>CSS</label>
+        </div>
+        <div class="area">
+            <textarea  id="css-text" onkeyup="run()"></textarea>
+        </div>
+    </section>
+    
+    <section id="javascript">
+        <div class="heading">
+            <label for="heading-name"><i class="fa-brands fa-square-js"></i>JAVASCRIPT</label>
+        </div>
+        <div class="area">
+            <textarea  id="js-text" onkeyup="run()"></textarea>
+        </div>
+    </section>
+</div>
+    <div class="container2">
+    <section id="output-area">
+        <div class="heading">
+            <label for="heading-name"><i class="fa-solid fa-code"></i>OUTPUT</label>
+        </div>
+        <div class="area">
+            <iframe id="output"></iframe>
+        </div>
+    </section>
+</div>
+</div>
+<script>
+
+    function run(){
+        let htmlcode = document.getElementById("html-text").value;
+        let csscode = document.getElementById("css-text").value;
+        let jscode = document.getElementById("js-text").value;
+        let output = document.getElementById("output");
+
+        output.contentDocument.body.innerHTML = htmlcode + "<style>"+csscode+"</style>";
+        output.contentWindow.eval(jscode);
+    }
+
+</script>
+</body>
+</html>
